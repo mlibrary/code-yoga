@@ -16,14 +16,7 @@ class Bottles
     end
 
     def description
-      case num
-      when 0
-        "no more bottles"
-      when 1
-        "1 bottle"
-      else
-        "#{num} bottles"
-      end
+      "#{num} bottles"
     end
 
     def pronoun
@@ -65,8 +58,8 @@ class Bottles
   end
 
   class NoBottles < BottleSet
-    def pronoun
-      "no more"
+    def description
+      "no more bottles"
     end
 
     def instruction
