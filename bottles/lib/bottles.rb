@@ -8,26 +8,6 @@ class Bottles
     upper.downto(lower).map {|i| verse(i)}.join("\n")
   end
 
-  def beer_bottle_group(num)
-    case num
-    when 0
-      "no more bottles"
-    when 1
-      "1 bottle"
-    else
-      "#{num} bottles"
-    end
-  end
-
-  def pronoun(num)
-    case num
-    when 1
-      'it'
-    else
-      'one'
-    end
-  end
-
   class BottleSet
     attr_reader :num
 
@@ -50,7 +30,7 @@ class Bottles
       "one"
     end
 
-    def prev
+    def next
       self.class.from(num - 1)
     end
 
@@ -79,7 +59,7 @@ class Bottles
       "1 bottle"
     end
 
-    def prev
+    def next
       BottleSet.from(0)
     end
   end
@@ -93,7 +73,7 @@ class Bottles
       "Go to the store and buy some more"
     end
 
-    def prev
+    def next
       BottleSet.from(99)
     end
   end
@@ -102,7 +82,7 @@ class Bottles
   def verse(number)
     bs = BottleSet.from(number)
     "#{bs.description.capitalize} of beer on the wall, #{bs.description} of beer.\n" +
-        "#{bs.instruction}, #{bs.prev.description} of beer on the wall.\n"
+        "#{bs.instruction}, #{bs.next.description} of beer on the wall.\n"
   end
 
 end
