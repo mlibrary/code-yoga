@@ -3,14 +3,16 @@
 module PrimeFactors
   def self.for(n)
     factors = []
+    divisor = 2
+
     while n > 1
-      2.upto(n).each do |divisor|
-        while n % divisor == 0
-          factors << divisor
-          n /= divisor
-        end
+      while n % divisor == 0
+        factors << divisor
+        n /= divisor
       end
+      divisor += 1
     end
+
     factors
   end
 end
